@@ -12,62 +12,62 @@
   No competitor named (pitch-safe). No em dashes (project convention).
 -->
 <style>
-  :root{ --green-dd:#10402a; --green-d:#15673E; --green:#1DB46B; --green-l:#5BB286;
-    --ink:#1f2420; --muted:#6f7d74; --line:#e6ece8; --bg:#f5f9f6; --card:#fff; --no:#c2ccc6; --gold:#b8860b; }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:"Segoe UI",-apple-system,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-  header{background:linear-gradient(135deg,var(--green-dd),var(--green-d) 55%,var(--green));color:#fff;padding:46px 0 40px;text-align:center}
-  header .sub{margin:0 auto;color:#cdeede;letter-spacing:.04em;max-width:640px}
-  header h1{margin:6px 0 0;font-size:1.7rem}
-  .bignum{font-size:2.6rem;font-weight:800;margin-top:6px;line-height:1}
-  .stats2{margin-top:8px;color:#bdebd2;font-size:.9rem}
-
-  section{padding:32px 0 4px}
-  h2{font-size:1.45rem;color:var(--green-d);margin:0 0 16px}
-  .allmore{text-align:center;color:var(--muted);font-style:italic;margin:16px 0 0}
-  .downarrow{text-align:center;color:var(--green);font-size:1.7rem;line-height:1;margin:4px 0 10px}
-  .cta.findbtn{justify-content:center;margin-top:0}
-
-  .kgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-  .kcard{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:12px;padding:14px 14px;box-shadow:0 4px 16px rgba(21,103,62,.05)}
-  .kcard h3{margin:0 0 8px;font-size:1.05rem;color:var(--green-d)}
-  .kcard ul{margin:0;padding:0;list-style:none}
-  .kcard li{font-size:.9rem;padding:2px 0;color:var(--ink)}
-  .kcard li.more{color:var(--muted);font-style:italic}
-  .kcard.fungi{border-left-color:var(--gold)}
-  .kcard.bacteria{border-left-color:var(--green-l)} .kcard.protists{border-left-color:var(--green-dd)}
-
-  .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
-  .center{text-align:center}
-  .center .cta{justify-content:center}
-  .btn{display:inline-block;background:var(--green-d);color:#fff;text-decoration:none;font-weight:600;font-size:1rem;padding:12px 20px;border-radius:9px}
-  .btn.alt{background:#fff;color:var(--green-d);border:1px solid var(--green-d)}
-
-  .band{border-radius:16px;padding:24px 26px}
-  .band.green{background:linear-gradient(135deg,#eef7f0,#e2f3e8);border:1px solid #cfe9d8}
-  .band.gold{background:linear-gradient(135deg,#fffaf0,#fff3d6);border:1px solid #f0dca8}
-  .band h2{margin-bottom:6px}
-  .band.gold h2{color:var(--gold)}
-  .bandline{color:var(--green-d);font-weight:700;font-size:1.05rem;margin:0 0 14px}
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:.9rem;font-weight:600;color:var(--green-d)}
-  .band.green .chip{border-color:#cfe9d8}
-  .band.gold .chip{border-color:#f0dca8;color:#8a6400}
-  .seemore{display:inline-block;margin-top:14px;color:var(--green-d);font-weight:700;font-size:.92rem;text-decoration:underline}
-  .band.gold .seemore{color:#8a6400}
-
-  footer{color:var(--muted);font-size:.78rem;padding:30px 0 50px;text-align:center}
-  @media (max-width:880px){ .kgrid{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:520px){ .kgrid{grid-template-columns:1fr} .bignum{font-size:2.5rem} }
+  .orditus-breadth{
+    --green-dd:#10402a;--green-d:#15673E;--green:#1DB46B;--green-l:#5BB286;
+    --ink:#1f2420;--muted:#6f7d74;--line:#e6ece8;--bg:#f5f9f6;--card:#fff;--no:#c2ccc6;--gold:#b8860b;
+    font-family:"Segoe UI",-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.5;
+  }
+  .orditus-breadth *{box-sizing:border-box}
+  .orditus-breadth .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .orditus-breadth .ob-header{background:linear-gradient(135deg,var(--green-dd),var(--green-d) 55%,var(--green));color:#fff;padding:46px 0 40px;text-align:center}
+  .orditus-breadth .ob-header .sub{margin:0 auto;color:#cdeede;letter-spacing:.04em;max-width:640px}
+  .orditus-breadth .ob-header h1{margin:6px 0 0;font-size:1.7rem}
+  .orditus-breadth .bignum{font-size:2.6rem;font-weight:800;margin-top:6px;line-height:1}
+  .orditus-breadth .stats2{margin-top:8px;color:#bdebd2;font-size:.9rem}
+  .orditus-breadth section{padding:32px 0 4px}
+  .orditus-breadth h2{font-size:1.45rem;color:var(--green-d);margin:0 0 16px}
+  .orditus-breadth .allmore{text-align:center;color:var(--muted);font-style:italic;margin:16px 0 0}
+  .orditus-breadth .downarrow{text-align:center;color:var(--green);font-size:1.7rem;line-height:1;margin:4px 0 10px}
+  .orditus-breadth .cta.findbtn{justify-content:center;margin-top:0}
+  .orditus-breadth .kgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .orditus-breadth .kcard{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:12px;padding:14px;box-shadow:0 4px 16px rgba(21,103,62,.05)}
+  .orditus-breadth .kcard h3{margin:0 0 8px;font-size:1.05rem;color:var(--green-d)}
+  .orditus-breadth .kcard ul{margin:0;padding:0;list-style:none}
+  .orditus-breadth .kcard li{font-size:.9rem;padding:2px 0;color:var(--ink)}
+  .orditus-breadth .kcard li.more{color:var(--muted);font-style:italic}
+  .orditus-breadth .kcard.fungi{border-left-color:var(--gold)}
+  .orditus-breadth .kcard.bacteria{border-left-color:var(--green-l)}
+  .orditus-breadth .kcard.protists{border-left-color:var(--green-dd)}
+  .orditus-breadth .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
+  .orditus-breadth .center{text-align:center}
+  .orditus-breadth .center .cta{justify-content:center}
+  .orditus-breadth .btn{display:inline-block;background:var(--green-d);color:#fff;text-decoration:none;font-weight:600;font-size:1rem;padding:12px 20px;border-radius:9px}
+  .orditus-breadth .btn.alt{background:#fff;color:var(--green-d);border:1px solid var(--green-d)}
+  .orditus-breadth .band{border-radius:16px;padding:24px 26px}
+  .orditus-breadth .band.green{background:linear-gradient(135deg,#eef7f0,#e2f3e8);border:1px solid #cfe9d8}
+  .orditus-breadth .band.gold{background:linear-gradient(135deg,#fffaf0,#fff3d6);border:1px solid #f0dca8}
+  .orditus-breadth .band h2{margin-bottom:6px}
+  .orditus-breadth .band.gold h2{color:var(--gold)}
+  .orditus-breadth .bandline{color:var(--green-d);font-weight:700;font-size:1.05rem;margin:0 0 14px}
+  .orditus-breadth .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .orditus-breadth .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:.9rem;font-weight:600;color:var(--green-d)}
+  .orditus-breadth .band.green .chip{border-color:#cfe9d8}
+  .orditus-breadth .band.gold .chip{border-color:#f0dca8;color:#8a6400}
+  .orditus-breadth .seemore{display:inline-block;margin-top:14px;color:var(--green-d);font-weight:700;font-size:.92rem;text-decoration:underline}
+  .orditus-breadth .band.gold .seemore{color:#8a6400}
+  .orditus-breadth .ob-footer{color:var(--muted);font-size:.78rem;padding:30px 0 50px;text-align:center}
+  @media(max-width:880px){.orditus-breadth .kgrid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.orditus-breadth .kgrid{grid-template-columns:1fr}.orditus-breadth .bignum{font-size:2.5rem}}
 </style>
 </head>
 <body>
-  <header><div class="wrap">
+<div class="orditus-breadth">
+  <div class="ob-header"><div class="wrap">
     <p class="sub">iDEP &amp; ShinyGO</p>
     <h1>Supported Species</h1>
     <div class="bignum">13,390</div>
-  </div></header>
+  </div></div>
 
   <div class="wrap">
 
@@ -113,7 +113,7 @@
       <p class="allmore">and many more</p>
       <div class="downarrow" aria-hidden="true">&#8595;</div>
       <div class="cta findbtn">
-        <a class="btn" href="supported-species.html">Find your species</a>
+        <a class="btn" href="/supported-species">Find your species</a>
       </div>
     </section>
 
@@ -129,7 +129,7 @@
           <span class="chip">Oil palm</span><span class="chip">Camelina</span><span class="chip">Canola</span>
           <span class="chip">Cacao</span><span class="chip">Banana</span><span class="chip">Citrus</span>
         </div>
-        <a class="seemore" href="supported-species.html">See more</a>
+        <a class="seemore" href="/supported-species">See more</a>
       </div>
     </section>
 
@@ -144,7 +144,7 @@
           <span class="chip">Japanese flounder</span><span class="chip">Silk moth</span><span class="chip">Barn swallow</span>
           <span class="chip">African clawed frog</span><span class="chip">Fence lizard</span>
         </div>
-        <a class="seemore" href="supported-species.html">See more</a>
+        <a class="seemore" href="/supported-species">See more</a>
       </div>
     </section>
 
@@ -158,8 +158,10 @@
 
   </div>
 
-  <footer><div class="wrap">
+  <div class="ob-footer"><div class="wrap">
     *Usage figures from the literature citing iDEP and ShinyGO.
-  </div></footer>
+  </div></div>
+
+</div><!-- /.orditus-breadth -->
 </body>
 </html>

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iDEP / ShinyGO: Supported Species</title>
+<style>
+  :root{ --green-dd:#10402a; --green-d:#15673E; --green:#1DB46B; --green-l:#5BB286;
+    --ink:#1f2420; --muted:#6f7d74; --line:#e6ece8; --bg:#f5f9f6; --card:#fff; --no:#c2ccc6; --gold:#b8860b; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",-apple-system,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+  .wide{max-width:1100px;margin:0 auto;padding:0 20px}
+  header{background:linear-gradient(135deg,var(--green-dd),var(--green-d) 55%,var(--green));color:#fff;padding:40px 0 30px;text-align:center}
+  header h1{margin:0 0 6px;font-size:1.7rem}
+  header .sub{margin:0 auto;color:#cdeede;max-width:640px}
+  .bignum{font-size:2.6rem;font-weight:800;margin-top:6px}
+  .bignum small{font-size:.9rem;font-weight:600;color:#bdebd2;display:block;letter-spacing:.04em}
+  .stats2{margin-top:8px;color:#bdebd2;font-size:.9rem}
+  .searchbar{margin:-24px auto 0;max-width:1100px;padding:0 20px}
+  .searchbar input{display:block;width:100%;max-width:820px;margin:0 auto;padding:13px 16px;border:1px solid var(--line);border-radius:12px;font-size:.92rem;box-shadow:0 10px 30px rgba(21,103,62,.12);outline:none}
+  .searchbar input:focus{border-color:var(--green)}
+  .controls{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:16px 0 4px}
+  .chipbtn{font-size:.82rem;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer}
+  .chipbtn.on{background:var(--green-d);border-color:var(--green-d);color:#fff;font-weight:600}
+  .legend{color:var(--muted);font-size:.84rem;margin:6px 0}
+  .tablewrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(21,103,62,.05)}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:.94rem;white-space:nowrap}
+  th{background:#eef5f0;color:var(--green-d);font-size:.74rem;text-transform:uppercase;letter-spacing:.04em}
+  th.c,td.c{text-align:center} th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+  th.sphead{position:relative}
+  .rowhint{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-transform:none;letter-spacing:normal;font-weight:400;color:var(--muted);font-size:.8rem;pointer-events:none}
+  tr.spp{cursor:pointer} tr.spp:hover{background:#f3f9f5}
+  .spcell{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .common{font-weight:700} .latin{font-style:italic;color:var(--muted);font-size:.85rem}
+  .asm{color:var(--muted);font-size:.78rem}
+  .src{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#fff;border-radius:999px;padding:2px 9px}
+  .src.Ensembl{background:var(--green-d)} .src.STRINGdb{background:var(--green-l)} .src.Custom{background:var(--gold)}
+  .star{color:var(--gold);font-weight:800}
+  .yes{color:var(--green);font-weight:800} .no{color:var(--no)}
+  .arrow{color:var(--green);font-weight:800;display:inline-block;width:13px}
+  .detail td{background:#fbfdfc;padding:8px 18px 18px;white-space:normal}
+  .cat{margin:12px 0 0} .cat h4{margin:0 0 6px;font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--green-d)}
+  .countnote{margin:2px 0 6px;font-style:italic}
+  .catlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:2px 26px}
+  .gsrow{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:3px 0;border-bottom:1px solid var(--line);font-size:.86rem}
+  .gsname{color:var(--ink);min-width:0;overflow-wrap:anywhere}
+  .gsnum{white-space:nowrap;text-align:right}
+  .gsnum .n{color:var(--green-d);font-weight:700;font-variant-numeric:tabular-nums}
+  .gsnum .u{color:var(--muted);font-size:.78rem;margin-left:3px}
+  .cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 2px}
+  .btn{display:inline-block;background:var(--green-d);color:#fff;text-decoration:none;font-weight:600;font-size:.85rem;padding:8px 14px;border-radius:9px}
+  .btn.alt{background:#fff;color:var(--green-d);border:1px solid var(--green-d)}
+  .note{background:#eef5f0;border:1px solid #d8e9df;border-radius:12px;padding:16px 18px;margin:18px 0}
+  .warn{background:#fff8e1;border:1px solid #ffe2a8;color:#7a5a00}
+  footer{color:var(--muted);font-size:.8rem;padding:26px 0 50px;text-align:center}
+  @media (max-width:640px){ th[data-k="taxid"], td.num{display:none} .rowhint{display:none} .catlist{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+  <header><div class="wrap">
+    <p class="sub">iDEP &amp; ShinyGO</p>
+    <h1>Supported Species</h1>
+    <div class="bignum" id="headline">n/a</div>
+    <div class="stats2" id="stats2"></div>
+  </div></header>
+
+  <div class="searchbar">
+    <input id="q" type="text" autofocus autocomplete="off"
+      placeholder="Common name or latin name (e.g. zebrafish, barley)…">
+  </div>
+
+  <div class="wide">
+    <div class="controls" id="srcchips"></div>
+    <div class="legend" id="legend"></div>
+    <div id="results"></div>
+    <div class="cta">
+      <a class="btn" href="https://bioinformatics.sdstate.edu/idep/" target="_blank" rel="noopener">Analyze your data in iDEP</a>
+      <a class="btn alt" href="https://bioinformatics.sdstate.edu/go/" target="_blank" rel="noopener">Run enrichment in ShinyGO</a>
+    </div>
+  </div>
+
+  <footer><div class="wrap"><span id="ver-line"></span> Sources: Ensembl (curated), STRING-db (broad baseline), Custom.</div></footer>
+
+<script src="species_catalog.js"></script>
+<script>
+  var results=document.getElementById("results"), legend=document.getElementById("legend");
+  function clean(x){ return (x||"").replace(/ /g," ").replace(/\*+\s*$/,"").trim(); }
+  function cleanName(s){ return (s||"?").replace(/\s*STRINGdb\s*$/i,"").trim() || "?"; }  // Source badge already says STRING-db
+  function srcClass(s){ return (s==="STRING-db")?"STRINGdb":(s||"Ensembl"); }
+
+  if (typeof window.CATALOG==="undefined") {
+    results.innerHTML='<div class="note warn"><b>No data yet.</b> Run <code>Rscript build_supported_species.R</code> to generate <code>species_catalog.js</code>, then refresh.</div>';
+  } else {
+    var C=window.CATALOG, SP=C.species.slice();
+    SP.forEach(function(sp){ sp._s=((sp.common||"")+" "+(sp.latin||"")+" "+(sp.source||"")+" "+(sp.taxid||"")).toLowerCase(); });
+
+    var total=C.meta.total_species||SP.length;
+    document.getElementById("headline").textContent=Number(total).toLocaleString();
+    var bs=C.meta.by_source||{}; var order=["Ensembl","STRING-db","Custom"];
+    var keys=order.filter(function(k){return k in bs;}); for(var k in bs){ if(keys.indexOf(k)<0) keys.push(k); }
+    var parts=keys.map(function(k){ return Number(bs[k]).toLocaleString()+" "+k; });
+    document.getElementById("stats2").textContent=parts.join("  ·  ");
+    document.getElementById("ver-line").textContent="Data version "+C.meta.db_ver+".";
+
+    var SRC_CLASSES=["Ensembl","STRING-db","Custom"];
+    var SRC_COLS=[["kegg","KEGG"],["go","GO terms"],["reactome","Reactome"],["msigdb","MSigDB"]];
+    function flag(sp,key){ var v=(sp.has && key in sp.has)?sp.has[key]:(key==="kegg"?sp.kegg:undefined);
+      if(v===true)  return '<span class="yes" title="Available">&#10003;</span>';
+      if(v===false) return '<span class="no" title="Not included">&ndash;</span>';
+      return '<span class="no" title="Supported; full breakdown not yet listed">&ndash;</span>'; }
+    var activeSrc=null, sortKey="featured", sortDir=-1, LIMIT=100, t=null;
+
+    function sc(){ var h='<span class="legend" style="margin-right:4px">Source:</span>';
+      SRC_CLASSES.forEach(function(s){ h+='<span class="chipbtn'+(activeSrc===s?" on":"")+'" data-s="'+s+'">'+s+'</span>'; });
+      document.getElementById("srcchips").innerHTML=h; }
+
+    function matches(sp,q){
+      if (activeSrc && sp.sclass!==activeSrc) return false;
+      if (!q) return true;
+      return q.toLowerCase().split(/\s+/).every(function(tok){
+        if (sp._s.indexOf(tok)>=0) return true;
+        if (tok==="kegg" && sp.kegg) return true;
+        if (sp.categories){ for(var cat in sp.categories){ var a=sp.categories[cat];
+          for(var j=0;j<a.length;j++){ if((a[j].name||"").toLowerCase().indexOf(tok)>=0) return true; } } }
+        return false; });
+    }
+
+    function detailHTML(sp){
+      var meta=(sp.assembly?('Assembly '+sp.assembly+'. '):'');
+      if (!sp.featured || !sp.categories){
+        return '<div class="legend">'+meta+'Standard GO/KEGG baseline. A full gene-set breakdown is available for '+(C.meta.n_with_depth||0)+' species so far.</div>';
+      }
+      var isString=(sp.sclass==="STRING-db"), unit=isString?"annotations":"sets";
+      var countNote=isString
+        ? "Counts show gene-to-term annotations (memberships), not the number of gene sets."
+        : "Counts show the number of gene sets in each collection.";
+      var h='<div class="legend" style="margin-bottom:2px">'+meta+'<b>'+(sp.n_sources||0)+'</b> gene-set sources.</div>'
+        +'<div class="legend countnote">'+countNote+'</div>';
+      for (var cat in sp.categories){ var arr=(sp.categories[cat]||[]).filter(function(it){return clean(it.name);}); if(!arr.length) continue;
+        h+='<div class="cat"><h4>'+cat+' ('+arr.length+')</h4><div class="catlist">';
+        arr.forEach(function(it){ var nm=clean(it.name);
+          var n=(it.n!=null)?'<span class="n">'+Number(it.n).toLocaleString()+'</span> <span class="u">'+unit+'</span>':'';
+          h+='<div class="gsrow"><span class="gsname">'+nm+'</span><span class="gsnum">'+n+'</span></div>'; });
+        h+='</div></div>'; }
+      return h;
+    }
+
+    function render(){
+      var q=document.getElementById("q").value.trim();
+      var rows=SP.filter(function(s){return matches(s,q);});
+      // default (no query, no filter): show featured first so the page isn't a 13k dump
+      rows.sort(function(a,b){ if(sortKey==="featured"){ var d=(b.featured?1:0)-(a.featured?1:0); if(d) return d; return (b.n_sources||0)-(a.n_sources||0); }
+        var av=a[sortKey],bv=b[sortKey]; return (typeof av==="string")?sortDir*((av||"").localeCompare(bv||"")):sortDir*((av||0)-(bv||0)); });
+      var totalN=rows.length, capped=rows.slice(0,LIMIT);
+      legend.textContent=totalN.toLocaleString()+' of '+SP.length.toLocaleString()+' species'+(q?' for "'+q+'"':'')
+        +(totalN>LIMIT?(' (showing first '+LIMIT+')'):'')+'.';
+      if(!totalN){ results.innerHTML='<div class="note">We could not find that. Try the latin name (e.g. Mus musculus) or the taxonomy id (e.g. 10090). Most sequenced organisms are supported through the broad STRING-db set.</div>'; return; }
+      var h='<div class="tablewrap"><table><thead><tr>'
+        +'<th class="sphead" data-k="common">Species<span class="rowhint">Click a row for details</span></th><th data-k="sclass">Source</th>'
+        +'<th class="num" data-k="taxid">Tax ID</th>'
+        + SRC_COLS.map(function(p){return '<th class="c">'+p[1]+'</th>';}).join('')
+        +'</tr></thead><tbody>';
+      capped.forEach(function(sp,idx){
+        var nm=cleanName(sp.common);
+        h+='<tr class="spp" data-i="'+idx+'"><td><div class="spcell" title="'+nm+'"><span class="arrow">&#9656;</span> <span class="common">'+nm+'</span> '
+          +(sp.latin?'<span class="latin">'+sp.latin+'</span>':'')+(sp.assembly?' <span class="asm">'+sp.assembly+'</span>':'')+'</div></td>'
+          +'<td><span class="src '+srcClass(sp.sclass)+'">'+(sp.sclass||"?")+'</span></td>'
+          +'<td class="num">'+(sp.taxid!=null?sp.taxid:'')+'</td>'
+          + SRC_COLS.map(function(p){return '<td class="c">'+flag(sp,p[0])+'</td>';}).join('')
+          +'</tr>'
+          +'<tr class="detail" id="d'+idx+'" style="display:none"><td colspan="'+(3+SRC_COLS.length)+'">'+detailHTML(sp)+'</td></tr>';
+      });
+      h+='</tbody></table></div>'; results.innerHTML=h;
+      Array.prototype.forEach.call(document.querySelectorAll("tr.spp"),function(tr){ tr.addEventListener("click",function(){
+        var d=document.getElementById("d"+tr.getAttribute("data-i")); var open=d.style.display!=="none";
+        d.style.display=open?"none":"table-row"; tr.querySelector(".arrow").innerHTML=open?"&#9656;":"&#9662;"; }); });
+    }
+    function debounced(){ clearTimeout(t); t=setTimeout(render,130); }
+    document.getElementById("q").addEventListener("input",debounced);
+    document.getElementById("srcchips").addEventListener("click",function(e){ var s=e.target.getAttribute("data-s"); if(!s) return; activeSrc=(activeSrc===s)?null:s; sc(); render(); });
+    sc(); render();
+  }
+</script>
+</body>
+</html>

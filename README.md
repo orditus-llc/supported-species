@@ -1,19 +1,37 @@
-# Supported Species — iDEP / ShinyGO
+# Supported Species - iDEP / ShinyGO
 
-Species pages for [orditus.com](https://orditus.com).
+Species pages for [orditus.com](https://orditus.com), served by GitHub Pages and shown on WordPress in iframes.
 
 ## Files
 
-| File | Where it goes |
-|---|---|
-| `supported-species.html` | Pasted manually into WordPress `/supported-species/` |
-| `database-search-embed.html` | Pasted manually into WordPress `/database-search/` |
-| `species_app.js` | Served by GitHub Pages, loaded by the embed |
-| `species_catalog.js` | Served by GitHub Pages, loaded by the embed (species data) |
-| `species_catalog.json` | Same data as JSON. Not used by the site. |
-| `database-search.html` | Standalone local preview. Not used by the site. |
+| File | Live at | Shown on |
+|---|---|---|
+| `index.html` | [orditus-llc.github.io/supported-species/](https://orditus-llc.github.io/supported-species/) | orditus.com/supported-species/ |
+| `database-search.html` | [orditus-llc.github.io/supported-species/database-search.html](https://orditus-llc.github.io/supported-species/database-search.html) | orditus.com/database-search/ |
+| `species_app.js` | Search logic, loaded by `database-search.html` | |
+| `species_catalog.js` | Species data, loaded by `database-search.html` | |
+| `iframe_resize.js` | Tells WordPress each page's height so the iframe fits | |
+| `species_catalog.json` | Same data as JSON. Not used by the site. | |
 
 ## Updating
 
-- **`.js` files:** push. Live in minutes.
-- **`.html` files:** push, then re-paste into WordPress.
+Push to `main`. Pages and orditus.com update in a few minutes. Nothing to re-paste.
+
+## WordPress snippet
+
+Each WordPress page has one Custom HTML block. Change `src` per page.
+
+```html
+<iframe src="https://orditus-llc.github.io/supported-species/"
+  title="Supported species" style="width:100%;height:1700px;border:0;display:block"></iframe>
+<script>
+window.addEventListener("message", function (e) {
+  if (e.origin !== "https://orditus-llc.github.io" || !e.data || !e.data.ordHeight) return;
+  document.querySelectorAll("iframe").forEach(function (f) {
+    if (f.contentWindow === e.source) f.style.height = e.data.ordHeight + "px";
+  });
+});
+</script>
+```
+
+If WordPress strips the `<script>`, the iframe still works at the fixed height.

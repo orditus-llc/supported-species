@@ -5,13 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>iDEP / ShinyGO: Supported Species</title>
 <!--
-  species-breadth.html  (marketing / pitch page) - LEAN.
-  Static, self-contained. Matches database-search.html theme.
+  Supported Species (marketing page). Served by GitHub Pages and shown on
+  orditus.com/supported-species/ in an iframe. Links to orditus.com pages use
+  target="_top" so they leave the iframe. Matches database-search.html theme.
   Sources: 13,000+ = supported catalog (orgInfo.db). "1 in 7 plant" = species-scan
   analysis. Customized list = the 36 Custom-source species in the catalog (clean subset).
   No competitor named (pitch-safe). No em dashes (project convention).
 -->
 <style>
+  body{margin:0;background:#f5f9f6;display:flow-root}
   .orditus-breadth{
     --green-dd:#10402a;--green-d:#15673E;--green:#1DB46B;--green-l:#5BB286;
     --ink:#1f2420;--muted:#6f7d74;--line:#e6ece8;--bg:#f5f9f6;--card:#fff;--no:#c2ccc6;--gold:#b8860b;
@@ -113,7 +115,7 @@
       <p class="allmore">and many more</p>
       <div class="downarrow" aria-hidden="true">&#8595;</div>
       <div class="cta findbtn">
-        <a class="btn" href="/database-search">Find your species</a>
+        <a class="btn" href="https://www.orditus.com/database-search/" target="_top">Find your species</a>
       </div>
     </section>
 
@@ -129,7 +131,7 @@
           <span class="chip">Oil palm</span><span class="chip">Camelina</span><span class="chip">Canola</span>
           <span class="chip">Cacao</span><span class="chip">Banana</span><span class="chip">Citrus</span>
         </div>
-        <a class="seemore" href="/database-search">See more</a>
+        <a class="seemore" href="https://www.orditus.com/database-search/" target="_top">See more</a>
       </div>
     </section>
 
@@ -144,7 +146,7 @@
           <span class="chip">Japanese flounder</span><span class="chip">Silk moth</span><span class="chip">Barn swallow</span>
           <span class="chip">African clawed frog</span><span class="chip">Fence lizard</span>
         </div>
-        <a class="seemore" href="/database-search">See more</a>
+        <a class="seemore" href="https://www.orditus.com/database-search/" target="_top">See more</a>
       </div>
     </section>
 
@@ -163,5 +165,6 @@
   </div></div>
 
 </div><!-- /.orditus-breadth -->
+<script src="iframe_resize.js"></script>
 </body>
 </html>
